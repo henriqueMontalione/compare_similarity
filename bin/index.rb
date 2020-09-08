@@ -1,4 +1,6 @@
-require './compare_similarity_service.rb'
+# frozen_string_literal: true
+
+require './bin/compare_similarity'
 
 master_file = parse_file(ARGV[0])
 comparison_file = parse_file(ARGV[1])
