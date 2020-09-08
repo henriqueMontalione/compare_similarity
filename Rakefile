@@ -1,0 +1,43 @@
+task :run do
+  sh('ruby bin/index.rb data/BreweriesMaster.json data/BreweriesMaster.json')
+  sh('ruby bin/index.rb data/BreweriesMaster.json data/BreweriesSample1.json')
+  sh('ruby bin/index.rb data/BreweriesMaster.json data/BreweriesSample2.json')
+  sh('ruby bin/index.rb data/BreweriesMaster.json data/BreweriesSample3.json')
+  sh('ruby bin/index.rb data/BreweriesMaster.json data/BreweriesSample4.json')
+  sh('ruby bin/index.rb data/BreweriesMaster.json data/BreweriesSample5.json')
+
+  sh('ruby bin/index.rb data/BreweriesSample1.json data/BreweriesMaster.json')
+  sh('ruby bin/index.rb data/BreweriesSample1.json data/BreweriesSample1.json')
+  sh('ruby bin/index.rb data/BreweriesSample1.json data/BreweriesSample2.json')
+  sh('ruby bin/index.rb data/BreweriesSample1.json data/BreweriesSample3.json')
+  sh('ruby bin/index.rb data/BreweriesSample1.json data/BreweriesSample4.json')
+  sh('ruby bin/index.rb data/BreweriesSample1.json data/BreweriesSample5.json')
+
+  sh('ruby bin/index.rb data/BreweriesSample2.json data/BreweriesMaster.json')
+  sh('ruby bin/index.rb data/BreweriesSample2.json data/BreweriesSample1.json')
+  sh('ruby bin/index.rb data/BreweriesSample2.json data/BreweriesSample2.json')
+  sh('ruby bin/index.rb data/BreweriesSample2.json data/BreweriesSample3.json')
+  sh('ruby bin/index.rb data/BreweriesSample2.json data/BreweriesSample4.json')
+  sh('ruby bin/index.rb data/BreweriesSample2.json data/BreweriesSample5.json')
+
+  sh('ruby bin/index.rb data/BreweriesSample3.json data/BreweriesMaster.json')
+  sh('ruby bin/index.rb data/BreweriesSample3.json data/BreweriesSample1.json')
+  sh('ruby bin/index.rb data/BreweriesSample3.json data/BreweriesSample2.json')
+  sh('ruby bin/index.rb data/BreweriesSample3.json data/BreweriesSample3.json')
+  sh('ruby bin/index.rb data/BreweriesSample3.json data/BreweriesSample4.json')
+  sh('ruby bin/index.rb data/BreweriesSample3.json data/BreweriesSample5.json')
+
+  sh('ruby bin/index.rb data/BreweriesSample4.json data/BreweriesMaster.json')
+  sh('ruby bin/index.rb data/BreweriesSample4.json data/BreweriesSample1.json')
+  sh('ruby bin/index.rb data/BreweriesSample4.json data/BreweriesSample2.json')
+  sh('ruby bin/index.rb data/BreweriesSample4.json data/BreweriesSample3.json')
+  sh('ruby bin/index.rb data/BreweriesSample4.json data/BreweriesSample4.json')
+  sh('ruby bin/index.rb data/BreweriesSample4.json data/BreweriesSample5.json')
+
+  sh('ruby bin/index.rb data/BreweriesSample5.json data/BreweriesMaster.json')
+  sh('ruby bin/index.rb data/BreweriesSample5.json data/BreweriesSample1.json')
+  sh('ruby bin/index.rb data/BreweriesSample5.json data/BreweriesSample2.json')
+  sh('ruby bin/index.rb data/BreweriesSample5.json data/BreweriesSample3.json')
+  sh('ruby bin/index.rb data/BreweriesSample5.json data/BreweriesSample4.json')
+  sh('ruby bin/index.rb data/BreweriesSample5.json data/BreweriesSample5.json')
+end
