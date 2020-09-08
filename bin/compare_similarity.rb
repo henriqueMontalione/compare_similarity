@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rubygems'
-require 'pry'
 require 'json'
 
 EVALUATIVE_CRITERIA = {
