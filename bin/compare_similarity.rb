@@ -56,7 +56,7 @@ def iterate_hash(master_json, comparison_json)
   @comparison_json_keys << comparison_json.keys if comparison_json.is_a?(Hash)
 
   master_json.each do |key, value|
-    next unless comparison_json.key?(key)
+    next unless comparison_json&.key?(key)
 
     master_json_val, comparison_json_val = value, comparison_json[key]
 
