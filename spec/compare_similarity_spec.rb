@@ -4,51 +4,48 @@ require 'spec_helper'
 require 'json'
 require './bin/compare_similarity'
 
-describe 'compare_similarity' do
+describe CompareSimilarity do
+  subject(:compare_similarity) { described_class }
+
   let(:master_path) { 'spec/fixtures/BreweriesMaster.json' }
   let(:master_read) { File.read(master_path) }
   let(:master_file) { JSON.parse(master_read) }
 
   let(:compare_path) { 'spec/fixtures/BreweriesSample1.json' }
-  let(:compare_read) { File.read(compare_path) }
 
-  let(:textFile_path) { 'spec/fixtures/TextFile.txt' }
+  let(:replied_score) { 0.9375 }
 
-  let(:master_json_value) { 'qwerty' }
-  let(:comparison_json_value) { 'qwerty' }
-  let(:comparison_json_value_hash) { { 'qwerty': 'qwerty' } }
-  let(:comparison_json_value_array) { ['qwerty'] }
-  let(:comparison_json_value_wrong) { 'qwert2' }
+  describe '#call' do
+    context 'Calculation with correct params' do
+      context 'with a correct file' do
+        it { expect(compare_similarity.new(master_path, compare_path).call).to eq(replied_score) }
+      end
 
-  describe '#match_validation' do
-    context 'with correct params' do
-      it { expect(match_validation(master_json_value, comparison_json_value)).to be_truthy }
+      context 'file with different number of keys' do
+        let(:master_path) { 'spec/fixtures/BreweriesMasterWithOneLessKey.json' }
+        let(:replied_score) { 0.9125000000000001 }
+
+        it { expect(compare_similarity.new(master_path, compare_path).call).to eq(replied_score) }
+      end
+
+      context 'file with different keys' do
+        let(:master_path) { 'spec/fixtures/BreweriesMasterWithdiferenteKeys.json' }
+        let(:replied_score) { 0.91 }
+
+        it { expect(compare_similarity.new(master_path, compare_path).call).to eq(replied_score) }
+      end
+
+      context 'file with different value in one key' do
+        let(:master_path) { 'spec/fixtures/BreweriesMasterWithdifferenteValueInOneKey.json' }
+        let(:replied_score) { 0.925 }
+
+        it { expect(compare_similarity.new(master_path, compare_path).call).to eq(replied_score) }
+      end
     end
 
     context 'with incorrect params' do
-      it { expect(match_validation(master_json_value, comparison_json_value_hash)).to be_falsey }
-      it { expect(match_validation(master_json_value, comparison_json_value_array)).to be_falsey }
-      it { expect(match_validation(master_json_value, comparison_json_value_wrong)).to be_falsey }
-    end
-  end
-
-  describe '#parse_file' do
-    context 'with correct params' do
-      it { expect(parse_file(master_path)).to eq(master_file) }
-    end
-
-    context 'with incorrect params' do
-      it { expect { parse_file(textFile_path) }.to raise_error(RuntimeError, "The input file: 'spec/fixtures/TextFile.txt' must be a json") }
-    end
-  end
-
-  describe '#valid_json?' do
-    context 'with correct params' do
-      it { expect(valid_json?(master_read)).to be_truthy }
-    end
-
-    context 'with incorrect params' do
-      it { expect(valid_json?(textFile_path)).to be_falsey }
+      it { expect { compare_similarity.new.call }.to raise_error(ArgumentError) }
+      it { expect { compare_similarity.new(master_file, master_file).call }.to raise_error(TypeError, 'no implicit conversion of Hash into String') }
     end
   end
 end
