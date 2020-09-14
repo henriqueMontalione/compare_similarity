@@ -13,7 +13,7 @@ describe CompareSimilarity do
 
   let(:compare_path) { 'spec/fixtures/BreweriesSample1.json' }
 
-  let(:replied_score) { 0.9375 }
+  let(:replied_score) { 1.0 }
 
   describe '#call' do
     context 'Calculation with correct params' do
@@ -23,21 +23,21 @@ describe CompareSimilarity do
 
       context 'file with different number of keys' do
         let(:master_path) { 'spec/fixtures/BreweriesMasterWithOneLessKey.json' }
-        let(:replied_score) { 0.9125000000000001 }
+        let(:replied_score) { 0.9750000000000001 }
 
         it { expect(compare_similarity.new(master_path, compare_path).call).to eq(replied_score) }
       end
 
       context 'file with different keys' do
         let(:master_path) { 'spec/fixtures/BreweriesMasterWithdiferenteKeys.json' }
-        let(:replied_score) { 0.91 }
+        let(:replied_score) { 0.9725 }
 
         it { expect(compare_similarity.new(master_path, compare_path).call).to eq(replied_score) }
       end
 
       context 'file with different value in one key' do
         let(:master_path) { 'spec/fixtures/BreweriesMasterWithdifferenteValueInOneKey.json' }
-        let(:replied_score) { 0.925 }
+        let(:replied_score) { 0.9875 }
 
         it { expect(compare_similarity.new(master_path, compare_path).call).to eq(replied_score) }
       end
